@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BRAND, whatsappUrl, whatsappLink } from "@/lib/contact";
 import { PartnerForm } from "@/components/PartnerForm";
+import { WhySilentMatters } from "@/components/WhySilentMatters";
 
 export default function HomePage() {
   return (
@@ -9,7 +10,7 @@ export default function HomePage() {
       <Nav />
       <Hero />
       <Vision />
-      <WhySilent />
+      <WhySilentMatters />
       <Vehicle />
       <Tours />
       <Testimonials />
@@ -28,7 +29,7 @@ function Nav() {
           Grin <span className="text-ochre-soft">Safaris</span>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm text-cream-soft/90">
-          <a href="#why" className="hover:text-cream-soft transition">Why silent</a>
+          <a href="#why-silent-matters" className="hover:text-cream-soft transition">Why silent</a>
           <a href="#vehicle" className="hover:text-cream-soft transition">The vehicle</a>
           <a href="#tours" className="hover:text-cream-soft transition">Tours</a>
           <a href="#guests" className="hover:text-cream-soft transition">Guests</a>
@@ -118,59 +119,6 @@ function Vision() {
             purpose-built for closer, calmer, more cinematic encounters in
             Kruger.
           </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- why silent ---------- */
-function WhySilent() {
-  const reasons = [
-    {
-      title: "Animals stay closer",
-      body: "Wildlife reacts to engine noise long before it reacts to you. A silent vehicle doesn't trigger flight — leopards stay on the kill, elephants keep grazing, lions keep breathing.",
-    },
-    {
-      title: "Cinematic photography",
-      body: "No engine vibration means tack-sharp long-lens shots. No diesel haze means clean light. Photographers get frames diesel game drives can't deliver.",
-    },
-    {
-      title: "True bush immersion",
-      body: "You hear the alarm calls. The wingbeats. The grass moving. The thing diesel safaris take from you is the soundtrack — we give it back.",
-    },
-    {
-      title: "Carbon-zero by design",
-      body: "Zero exhaust, zero fumes, zero emissions inside one of the world's great wild places. A feature of the experience, not a guilt-trip.",
-    },
-  ];
-
-  return (
-    <section id="why" className="bg-cream py-28 sm:py-36">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10">
-        <div className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.32em] text-forest-700 mb-5">
-            Why silent
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-forest-900 leading-[1.05]">
-            Four things a diesel engine takes from you.
-          </h2>
-        </div>
-
-        <div className="mt-16 grid sm:grid-cols-2 gap-x-10 gap-y-12">
-          {reasons.map((r, i) => (
-            <div key={r.title} className="flex gap-6">
-              <span className="font-display text-3xl text-ochre shrink-0 leading-none">
-                0{i + 1}
-              </span>
-              <div>
-                <h3 className="font-display text-2xl text-forest-900">
-                  {r.title}
-                </h3>
-                <p className="mt-3 text-stone-text leading-relaxed">{r.body}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
