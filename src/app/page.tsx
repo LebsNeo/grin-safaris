@@ -52,7 +52,7 @@ function Hero() {
   return (
     <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       <Image
-        src="/images/hero.png"
+        src="/images/hero.webp"
         alt="A dark green electric safari van beside a watering hole in Kruger at golden hour"
         fill
         priority
@@ -211,7 +211,7 @@ function Vehicle() {
           <div className="lg:col-span-7 grid grid-cols-2 gap-4 sm:gap-6">
             <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden col-span-2 sm:col-span-1">
               <Image
-                src="/images/exterior.png"
+                src="/images/exterior.webp"
                 alt="Electric safari van exterior in dark forest green"
                 fill
                 sizes="(min-width: 1024px) 30vw, 100vw"
@@ -220,7 +220,7 @@ function Vehicle() {
             </div>
             <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden col-span-2 sm:col-span-1 sm:translate-y-10">
               <Image
-                src="/images/interior.png"
+                src="/images/interior.webp"
                 alt="Luxury safari van interior with leather captain seats"
                 fill
                 sizes="(min-width: 1024px) 30vw, 100vw"
