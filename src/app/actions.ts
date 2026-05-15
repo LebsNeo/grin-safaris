@@ -22,8 +22,10 @@ export async function submitPartnerEnquiry(
 
   if (honeypot) return { status: "ok", message: "Thanks — we'll be in touch." };
 
+  if (!company || company.length < 2)
+    return { status: "error", message: "Please enter your company or lodge name." };
   if (!name || name.length < 2)
-    return { status: "error", message: "Please enter your name." };
+    return { status: "error", message: "Please enter your name and role." };
   if (!email || !isEmail(email))
     return { status: "error", message: "Please enter a valid email." };
   if (!message || message.length < 10)
