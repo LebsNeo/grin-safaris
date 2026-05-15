@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BRAND, whatsappUrl } from "@/lib/contact";
+import { BRAND, whatsappUrl, whatsappLink } from "@/lib/contact";
 import { PartnerForm } from "@/components/PartnerForm";
 
 export default function HomePage() {
@@ -9,8 +9,10 @@ export default function HomePage() {
       <Nav />
       <Hero />
       <Vision />
+      <WhySilent />
       <Vehicle />
       <Tours />
+      <Testimonials />
       <BookOrPartner />
       <Footer />
     </main>
@@ -25,10 +27,11 @@ function Nav() {
         <Link href="/" className="font-display text-xl tracking-tight text-cream-soft drop-shadow-sm">
           Grin <span className="text-ochre-soft">Safaris</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-9 text-sm text-cream-soft/90">
-          <a href="#vision" className="hover:text-cream-soft transition">The vision</a>
+        <nav className="hidden md:flex items-center gap-8 text-sm text-cream-soft/90">
+          <a href="#why" className="hover:text-cream-soft transition">Why silent</a>
           <a href="#vehicle" className="hover:text-cream-soft transition">The vehicle</a>
           <a href="#tours" className="hover:text-cream-soft transition">Tours</a>
+          <a href="#guests" className="hover:text-cream-soft transition">Guests</a>
           <a href="#partner" className="hover:text-cream-soft transition">Partners</a>
         </nav>
         <a
@@ -64,13 +67,13 @@ function Hero() {
             Kruger National Park · South Africa
           </p>
           <h1 className="font-display text-cream-soft text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] max-w-4xl">
-            Electric safaris.<br />
-            <span className="text-ochre-soft">Silent</span> by design.
+            Hear the lion<br />
+            <span className="text-ochre-soft">breathe.</span>
           </h1>
           <p className="mt-7 max-w-xl text-base sm:text-lg text-cream-soft/85 leading-relaxed">
-            A converted electric safari van. Zero emissions, zero engine noise —
-            so the wildlife stays calm and you get closer than any diesel ever
-            could.
+            Silent safaris in Kruger. Electric. Intimate. A premium guided
+            experience, capped at six guests — so you get closer than any diesel
+            engine ever will.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a
@@ -97,21 +100,6 @@ function Hero() {
 
 /* ---------- vision ---------- */
 function Vision() {
-  const pillars = [
-    {
-      title: "Zero emissions",
-      body: "A battery-electric drivetrain means no exhaust, no fumes, no diesel fingerprint left on the bushveld.",
-    },
-    {
-      title: "Silent approach",
-      body: "Without an idling combustion engine, animals don't flee at the sound of you arriving. They keep doing what they were doing.",
-    },
-    {
-      title: "Premium, calm",
-      body: "No vibration, no engine drone. Conversation stays low, wildlife stays close, the moment stays unbroken.",
-    },
-  ];
-
   return (
     <section id="vision" className="bg-cream-soft py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -120,24 +108,67 @@ function Vision() {
             The vision
           </p>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-forest-900 leading-[1.05]">
-            A safari that leaves nothing behind — except the memory of it.
+            A safari you can hear.
           </h2>
           <p className="mt-7 text-stone-text text-lg leading-relaxed">
-            Kruger is one of Earth's great wild places. We don't think it should
-            smell like diesel. Grin Safaris is building South Africa's first
-            fully electric guided safari fleet — purpose-built for conservation
-            areas, designed for the kind of game viewing you can't have with a
-            combustion engine.
+            Most game drives sound like a tractor. Ours sound like the bush. No
+            engine drone, no diesel haze, no vibration — just the wildlife, the
+            wind, and a guide speaking at conversation volume. Grin Safaris is
+            building South Africa's first fully electric guided safari fleet,
+            purpose-built for closer, calmer, more cinematic encounters in
+            Kruger.
           </p>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mt-20 grid sm:grid-cols-3 gap-10 sm:gap-8">
-          {pillars.map((p) => (
-            <div key={p.title} className="border-t border-forest-200 pt-6">
-              <h3 className="font-display text-2xl text-forest-900">
-                {p.title}
-              </h3>
-              <p className="mt-3 text-stone-text leading-relaxed">{p.body}</p>
+/* ---------- why silent ---------- */
+function WhySilent() {
+  const reasons = [
+    {
+      title: "Animals stay closer",
+      body: "Wildlife reacts to engine noise long before it reacts to you. A silent vehicle doesn't trigger flight — leopards stay on the kill, elephants keep grazing, lions keep breathing.",
+    },
+    {
+      title: "Cinematic photography",
+      body: "No engine vibration means tack-sharp long-lens shots. No diesel haze means clean light. Photographers get frames diesel game drives can't deliver.",
+    },
+    {
+      title: "True bush immersion",
+      body: "You hear the alarm calls. The wingbeats. The grass moving. The thing diesel safaris take from you is the soundtrack — we give it back.",
+    },
+    {
+      title: "Carbon-zero by design",
+      body: "Zero exhaust, zero fumes, zero emissions inside one of the world's great wild places. A feature of the experience, not a guilt-trip.",
+    },
+  ];
+
+  return (
+    <section id="why" className="bg-cream py-28 sm:py-36">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10">
+        <div className="max-w-3xl">
+          <p className="text-xs uppercase tracking-[0.32em] text-forest-700 mb-5">
+            Why silent
+          </p>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-forest-900 leading-[1.05]">
+            Four things a diesel engine takes from you.
+          </h2>
+        </div>
+
+        <div className="mt-16 grid sm:grid-cols-2 gap-x-10 gap-y-12">
+          {reasons.map((r, i) => (
+            <div key={r.title} className="flex gap-6">
+              <span className="font-display text-3xl text-ochre shrink-0 leading-none">
+                0{i + 1}
+              </span>
+              <div>
+                <h3 className="font-display text-2xl text-forest-900">
+                  {r.title}
+                </h3>
+                <p className="mt-3 text-stone-text leading-relaxed">{r.body}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -215,16 +246,97 @@ function Spec({ k, v }: { k: string; v: string }) {
 }
 
 /* ---------- tours ---------- */
-function Tours() {
-  const features = [
-    "4-hour expert-guided game drive",
-    "Sundowner stop with bushveld views",
-    "Premium snacks & refreshments",
-    "Maximum 6 guests per vehicle",
-    "Silent electric safari van",
-    "Local Kruger-certified guide",
-  ];
+type Pkg = {
+  id: string;
+  name: string;
+  blurb: string;
+  duration: string;
+  group: string;
+  price: string;
+  priceNote?: string;
+  features: string[];
+  feature?: boolean;
+};
 
+const PACKAGES: Pkg[] = [
+  {
+    id: "sundowner",
+    name: "Silent Sundowner",
+    blurb: "Golden-hour game drive into the magic hour — the busiest wildlife window of the day.",
+    duration: "3.5 hours · 16:00 – 19:30",
+    group: "Max 6 guests",
+    price: "R2,800",
+    priceNote: "or R3,500/pp private (2-pax)",
+    features: [
+      "Chilled MCC + bush canapé sundowner",
+      "Prime predator-activity window",
+      "Guided by a Kruger-certified ranger",
+    ],
+    feature: true,
+  },
+  {
+    id: "morning",
+    name: "Silent Morning",
+    blurb: "Pre-dawn departure into the cool, photo-optimised hours when the bush is most alive.",
+    duration: "5 hours · 05:30 – 10:30",
+    group: "Max 6 guests",
+    price: "R2,500",
+    features: [
+      "Breakfast picnic in the bush",
+      "Photo-optimised pacing",
+      "Best light of the day",
+    ],
+  },
+  {
+    id: "full-day",
+    name: "Full-Day Silent Safari",
+    blurb: "Sunrise to sunset across Kruger — the deepest, most unhurried game drive we run.",
+    duration: "9 hours",
+    group: "Max 6 guests",
+    price: "R3,500",
+    features: [
+      "All meals included",
+      "Multiple loop routes through Kruger",
+      "Time for the unexpected",
+    ],
+  },
+  {
+    id: "photographer",
+    name: "Photographer's Edit",
+    blurb: "A full day re-shaped around long lenses, golden hour, and the patience real wildlife photography needs.",
+    duration: "Full day · private charter",
+    group: "Max 3 guests · min 2",
+    price: "R5,500",
+    priceNote: "per person · private vehicle",
+    features: [
+      "Long-lens-friendly seat layout",
+      "Golden-hour priority routing",
+      "Guide briefed on photographic intent",
+    ],
+  },
+  {
+    id: "lodge",
+    name: "2D / 1N Silent Lodge Escape",
+    blurb: "Two days of silent safari, with a night at a SANParks luxury cottage between them.",
+    duration: "2 days · 1 night",
+    group: "Max 6 guests",
+    price: "R8,500",
+    priceNote: "per person · sharing",
+    features: [
+      "SANParks luxury cottage stay",
+      "Two full silent game drives",
+      "All meals + park transfers included",
+    ],
+  },
+];
+
+function buildPkgMessage(p: Pkg) {
+  return `Hi Grin Safaris — I'd like to book the ${p.name} (${p.price}${
+    p.priceNote ? " " + p.priceNote.replace(/^or /, "/ ") : ""
+  }). Please share availability and next steps.`;
+}
+
+function Tours() {
   return (
     <section id="tours" className="bg-cream py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -233,77 +345,290 @@ function Tours() {
             Tours
           </p>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-forest-900 leading-[1.05]">
-            One tour. Every detail considered.
+            Five ways to spend a day in silence.
           </h2>
           <p className="mt-6 text-stone-text text-lg leading-relaxed">
-            For our launch season we're running a single, intentionally curated
-            experience. Small groups, expert guiding, no rush.
+            Every package includes conservation fees, pickup within Hazyview /
+            White River, and the silent electric van. Small groups, expert
+            guiding, no rush.
           </p>
         </div>
 
-        <div className="mt-16 grid lg:grid-cols-5 gap-10 lg:gap-14">
-          <div className="lg:col-span-3 bg-forest-900 text-cream-soft rounded-3xl p-8 sm:p-12 relative overflow-hidden">
-            <div className="absolute -top-32 -right-32 size-96 rounded-full bg-ochre/10 blur-3xl" />
-            <p className="text-xs uppercase tracking-[0.3em] text-ochre-soft">
-              Signature experience
-            </p>
-            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl mt-4 leading-tight">
-              Guided Safari Tour
-            </h3>
-            <div className="mt-8 flex items-baseline gap-2">
-              <span className="font-display text-5xl sm:text-6xl">R2,000</span>
-              <span className="text-cream-soft/70">per person</span>
-            </div>
-
-            <ul className="mt-10 grid sm:grid-cols-2 gap-x-6 gap-y-3">
-              {features.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-cream-soft/90">
-                  <svg
-                    className="mt-1 size-4 shrink-0 text-ochre-soft"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden
-                  >
-                    <path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4L8.5 12 15.3 5.3a1 1 0 0 1 1.4 0Z" />
-                  </svg>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-12 inline-flex items-center gap-2 rounded-full bg-cream-soft hover:bg-white text-forest-900 px-7 py-3.5 text-sm font-medium transition"
-            >
-              Book on WhatsApp
-              <span aria-hidden>→</span>
-            </a>
-          </div>
-
-          <aside className="lg:col-span-2 flex flex-col gap-6">
-            <Card title="Half-day & full-day options" body="Custom durations available on request — talk to us via WhatsApp." />
-            <Card title="Multi-day overnight" body="Bespoke multi-day itineraries with lodge partners. Quote on request." />
-            <Card title="Private charters" body="Whole-vehicle bookings for families, photographers, and small groups." />
-          </aside>
+        <div className="mt-16 grid lg:grid-cols-3 gap-6 sm:gap-7">
+          {PACKAGES.map((p) => (
+            <PackageCard key={p.id} pkg={p} />
+          ))}
         </div>
 
-        <p className="mt-10 text-xs text-stone-muted">
-          *R2,000 per person reflects our launch-season half-day rate. Full-day
-          and overnight pricing on request.
-        </p>
+        <CarbonReceipt />
       </div>
     </section>
   );
 }
 
-function Card({ title, body }: { title: string; body: string }) {
+function PackageCard({ pkg: p }: { pkg: Pkg }) {
+  const isFeature = p.feature;
   return (
-    <div className="bg-cream-soft rounded-2xl p-7 border border-forest-100">
-      <h4 className="font-display text-xl text-forest-900">{title}</h4>
-      <p className="mt-2 text-stone-text leading-relaxed text-sm">{body}</p>
-    </div>
+    <article
+      className={[
+        "relative rounded-3xl p-8 flex flex-col",
+        isFeature
+          ? "bg-forest-900 text-cream-soft lg:row-span-2 lg:col-span-1 overflow-hidden"
+          : "bg-cream-soft border border-forest-100 text-charcoal",
+      ].join(" ")}
+    >
+      {isFeature && (
+        <div className="absolute -top-24 -right-24 size-72 rounded-full bg-ochre/15 blur-3xl pointer-events-none" />
+      )}
+
+      <header className="relative">
+        {isFeature && (
+          <p className="text-[10px] uppercase tracking-[0.3em] text-ochre-soft mb-3">
+            Most booked
+          </p>
+        )}
+        <h3
+          className={[
+            "font-display leading-tight",
+            isFeature ? "text-3xl sm:text-4xl" : "text-2xl",
+          ].join(" ")}
+        >
+          {p.name}
+        </h3>
+        <p
+          className={[
+            "mt-3 text-sm leading-relaxed",
+            isFeature ? "text-cream-soft/80" : "text-stone-text",
+          ].join(" ")}
+        >
+          {p.blurb}
+        </p>
+      </header>
+
+      <dl className="relative mt-7 grid grid-cols-2 gap-x-5 gap-y-3 text-xs">
+        <div>
+          <dt
+            className={[
+              "uppercase tracking-[0.2em]",
+              isFeature ? "text-cream-soft/50" : "text-stone-muted",
+            ].join(" ")}
+          >
+            Duration
+          </dt>
+          <dd
+            className={[
+              "mt-1 text-sm",
+              isFeature ? "text-cream-soft" : "text-charcoal",
+            ].join(" ")}
+          >
+            {p.duration}
+          </dd>
+        </div>
+        <div>
+          <dt
+            className={[
+              "uppercase tracking-[0.2em]",
+              isFeature ? "text-cream-soft/50" : "text-stone-muted",
+            ].join(" ")}
+          >
+            Group
+          </dt>
+          <dd
+            className={[
+              "mt-1 text-sm",
+              isFeature ? "text-cream-soft" : "text-charcoal",
+            ].join(" ")}
+          >
+            {p.group}
+          </dd>
+        </div>
+      </dl>
+
+      <div
+        className={[
+          "relative mt-7 pt-6 border-t",
+          isFeature ? "border-cream-soft/15" : "border-forest-100",
+        ].join(" ")}
+      >
+        <div className="flex items-baseline gap-2">
+          <span
+            className={[
+              "font-display",
+              isFeature ? "text-5xl" : "text-4xl text-forest-900",
+            ].join(" ")}
+          >
+            {p.price}
+          </span>
+          <span
+            className={[
+              "text-xs",
+              isFeature ? "text-cream-soft/70" : "text-stone-muted",
+            ].join(" ")}
+          >
+            per person
+          </span>
+        </div>
+        {p.priceNote && (
+          <p
+            className={[
+              "mt-1 text-xs",
+              isFeature ? "text-cream-soft/60" : "text-stone-muted",
+            ].join(" ")}
+          >
+            {p.priceNote}
+          </p>
+        )}
+      </div>
+
+      <ul className="relative mt-6 space-y-2.5 flex-1">
+        {p.features.map((f) => (
+          <li
+            key={f}
+            className={[
+              "flex items-start gap-3 text-sm",
+              isFeature ? "text-cream-soft/85" : "text-stone-text",
+            ].join(" ")}
+          >
+            <svg
+              className={[
+                "mt-1 size-4 shrink-0",
+                isFeature ? "text-ochre-soft" : "text-forest-600",
+              ].join(" ")}
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden
+            >
+              <path d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4L8.5 12 15.3 5.3a1 1 0 0 1 1.4 0Z" />
+            </svg>
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={whatsappLink(buildPkgMessage(p))}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={[
+          "relative mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition",
+          isFeature
+            ? "bg-cream-soft hover:bg-white text-forest-900"
+            : "bg-forest-800 hover:bg-forest-700 text-cream-soft",
+        ].join(" ")}
+      >
+        Book on WhatsApp
+        <span aria-hidden>→</span>
+      </a>
+    </article>
+  );
+}
+
+function CarbonReceipt() {
+  return (
+    <aside className="mt-16 relative overflow-hidden rounded-3xl bg-forest-50 border border-forest-100 px-6 sm:px-10 py-10 sm:py-12">
+      <div className="grid md:grid-cols-[auto,1fr,auto] gap-8 md:gap-10 items-center">
+        <div className="relative size-20 sm:size-24 shrink-0 rounded-2xl bg-forest-900 text-cream-soft flex flex-col items-center justify-center">
+          <span className="text-[9px] uppercase tracking-[0.2em] text-ochre-soft">
+            CO₂
+          </span>
+          <span className="font-display text-2xl sm:text-3xl mt-0.5">0kg</span>
+        </div>
+
+        <div>
+          <p className="text-xs uppercase tracking-[0.32em] text-forest-700 mb-3">
+            Your carbon receipt
+          </p>
+          <h3 className="font-display text-2xl sm:text-3xl text-forest-900 leading-tight">
+            Every booking comes with a personal carbon receipt.
+          </h3>
+          <p className="mt-3 text-stone-text leading-relaxed max-w-2xl">
+            A shareable card showing exactly how much CO₂ your safari{" "}
+            <em>didn't</em> burn versus the same drive in a diesel vehicle. One
+            tap to post — make your impact visible.
+          </p>
+        </div>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-forest-800 hover:bg-forest-700 text-cream-soft px-6 py-3.5 text-sm font-medium transition whitespace-nowrap"
+        >
+          Book a Silent Safari
+          <span aria-hidden>→</span>
+        </a>
+      </div>
+    </aside>
+  );
+}
+
+/* ---------- testimonials ---------- */
+{/* TODO: replace with real reviews once vehicle is operational */}
+const TESTIMONIALS = [
+  {
+    quote:
+      "We were 10 metres from a leopard. She didn't even know we were there. Impossible in a diesel vehicle.",
+    name: "Sarah M.",
+    location: "London",
+  },
+  {
+    quote:
+      "The photos are different. No engine vibration, no diesel haze. Just the animal and the light.",
+    name: "Marco D.",
+    location: "Milan",
+  },
+  {
+    quote:
+      "First safari I've done where I could actually hear the bush. Game-changer.",
+    name: "Lebogang K.",
+    location: "Johannesburg",
+  },
+];
+
+function Testimonials() {
+  return (
+    <section id="guests" className="bg-cream-soft py-28 sm:py-36">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10">
+        <div className="max-w-3xl">
+          <p className="text-xs uppercase tracking-[0.32em] text-forest-700 mb-5">
+            What guests love
+          </p>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-forest-900 leading-[1.05]">
+            The silence is the experience.
+          </h2>
+        </div>
+
+        <div className="mt-16 grid md:grid-cols-3 gap-6 sm:gap-8">
+          {/* TODO: replace with real reviews once vehicle is operational */}
+          {TESTIMONIALS.map((t) => (
+            <figure
+              key={t.name}
+              className="bg-cream rounded-3xl p-8 flex flex-col border border-forest-100"
+            >
+              <svg
+                className="size-7 text-ochre"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden
+              >
+                <path d="M9.5 7H6a4 4 0 0 0-4 4v6h6V11H6c0-.6.4-1 1-1h2.5V7zm10 0H16a4 4 0 0 0-4 4v6h6V11h-2c0-.6.4-1 1-1h2.5V7z" />
+              </svg>
+              <blockquote className="mt-5 font-display text-xl text-forest-900 leading-snug flex-1">
+                “{t.quote}”
+              </blockquote>
+              <figcaption className="mt-6 text-sm text-stone-text">
+                <span className="font-medium text-charcoal">{t.name}</span>{" "}
+                <span className="text-stone-muted">· {t.location}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <p className="mt-10 text-xs text-stone-muted italic">
+          Verified guest reviews coming once we launch in Q4 2026.
+        </p>
+      </div>
+    </section>
   );
 }
 
@@ -343,14 +668,20 @@ function BookOrPartner() {
 
         <div>
           <p className="text-xs uppercase tracking-[0.32em] text-forest-700 mb-5">
-            Tour operators & lodges
+            Tour operators & lodge partners
           </p>
           <h2 className="font-display text-4xl sm:text-5xl text-forest-900 leading-[1.05]">
-            Partner with us.
+            Refer your guests.
           </h2>
           <p className="mt-6 text-stone-text text-lg leading-relaxed">
-            Lodges, agencies, and tour operators — get in touch about white-label
-            game drives, group rates, and combined itineraries.
+            We work with lodges and concierge teams across Hazyview and the
+            wider Kruger gateway — Mdluli, Hippo Hollow, Hazyview Cabanas and
+            others — on referral commissions of <strong>10–15%</strong> for
+            confirmed bookings.
+          </p>
+          <p className="mt-3 text-sm text-stone-muted">
+            Tour operators welcome too. Tell us about your guests and we'll come
+            back with rates and terms.
           </p>
           <div className="mt-10">
             <PartnerForm />
@@ -380,8 +711,9 @@ function Footer() {
               Grin <span className="text-ochre-soft">Safaris</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed">
-              Electric-powered, expert-guided safari tours in Kruger National
-              Park. Premium, silent, sustainable.
+              Silent, electric, expert-guided safari tours in Kruger National
+              Park. Closer encounters, cleaner photography, true bush
+              immersion.
             </p>
           </div>
 
