@@ -204,6 +204,8 @@ type Pkg = {
   priceNote?: string;
   features: string[];
   feature?: boolean;
+  image: string;
+  imageAlt: string;
 };
 
 const PACKAGES: Pkg[] = [
@@ -221,6 +223,8 @@ const PACKAGES: Pkg[] = [
       "Guided by a Kruger-certified ranger",
     ],
     feature: true,
+    image: "/images/package-sundowner.webp",
+    imageAlt: "Couple silhouetted at a sundowner with bush canapés on the van's bonnet",
   },
   {
     id: "morning",
@@ -234,6 +238,8 @@ const PACKAGES: Pkg[] = [
       "Photo-optimised pacing",
       "Best light of the day",
     ],
+    image: "/images/package-morning.webp",
+    imageAlt: "Dawn breakfast picnic spread on a foldout table in the Kruger bush",
   },
   {
     id: "full-day",
@@ -247,6 +253,8 @@ const PACKAGES: Pkg[] = [
       "Multiple loop routes through Kruger",
       "Time for the unexpected",
     ],
+    image: "/images/package-full-day.webp",
+    imageAlt: "Mid-day Kruger waterhole with elephants drinking, safari van in soft focus",
   },
   {
     id: "photographer",
@@ -261,6 +269,8 @@ const PACKAGES: Pkg[] = [
       "Golden-hour priority routing",
       "Guide briefed on photographic intent",
     ],
+    image: "/images/package-photographer.webp",
+    imageAlt: "Photographer's hands on a DSLR with a long telephoto lens, animal in the distance",
   },
   {
     id: "lodge",
@@ -275,6 +285,8 @@ const PACKAGES: Pkg[] = [
       "Two full silent game drives",
       "All meals + park transfers included",
     ],
+    image: "/images/package-lodge.webp",
+    imageAlt: "Evening lodge fire pit with stars overhead and a premium cottage in soft focus",
   },
 ];
 
@@ -319,39 +331,51 @@ function PackageCard({ pkg: p }: { pkg: Pkg }) {
   return (
     <article
       className={[
-        "relative rounded-3xl p-8 flex flex-col",
+        "relative rounded-3xl flex flex-col overflow-hidden",
         isFeature
-          ? "bg-forest-900 text-cream-soft lg:row-span-2 lg:col-span-1 overflow-hidden"
+          ? "bg-forest-900 text-cream-soft lg:row-span-2 lg:col-span-1"
           : "bg-cream-soft border border-forest-100 text-charcoal",
       ].join(" ")}
     >
-      {isFeature && (
-        <div className="absolute -top-24 -right-24 size-72 rounded-full bg-ochre/15 blur-3xl pointer-events-none" />
-      )}
-
-      <header className="relative">
+      <div className="relative aspect-[16/10] w-full overflow-hidden">
+        <Image
+          src={p.image}
+          alt={p.imageAlt}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover"
+        />
         {isFeature && (
-          <p className="text-[10px] uppercase tracking-[0.3em] text-ochre-soft mb-3">
+          <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-forest-900/85 text-ochre-soft text-[10px] uppercase tracking-[0.3em] px-3 py-1.5 backdrop-blur-sm">
+            <span className="size-1.5 rounded-full bg-ochre-soft" />
             Most booked
-          </p>
+          </span>
         )}
-        <h3
-          className={[
-            "font-display leading-tight",
-            isFeature ? "text-3xl sm:text-4xl" : "text-2xl",
-          ].join(" ")}
-        >
-          {p.name}
-        </h3>
-        <p
-          className={[
-            "mt-3 text-sm leading-relaxed",
-            isFeature ? "text-cream-soft/80" : "text-stone-text",
-          ].join(" ")}
-        >
-          {p.blurb}
-        </p>
-      </header>
+      </div>
+
+      <div className="relative p-8 flex flex-col flex-1">
+        {isFeature && (
+          <div className="absolute -top-24 -right-24 size-72 rounded-full bg-ochre/15 blur-3xl pointer-events-none" />
+        )}
+
+        <header className="relative">
+          <h3
+            className={[
+              "font-display leading-tight",
+              isFeature ? "text-3xl sm:text-4xl" : "text-2xl",
+            ].join(" ")}
+          >
+            {p.name}
+          </h3>
+          <p
+            className={[
+              "mt-3 text-sm leading-relaxed",
+              isFeature ? "text-cream-soft/80" : "text-stone-text",
+            ].join(" ")}
+          >
+            {p.blurb}
+          </p>
+        </header>
 
       <dl className="relative mt-7 grid grid-cols-2 gap-x-5 gap-y-3 text-xs">
         <div>
@@ -453,20 +477,21 @@ function PackageCard({ pkg: p }: { pkg: Pkg }) {
         ))}
       </ul>
 
-      <a
-        href={whatsappLink(buildPkgMessage(p))}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={[
-          "relative mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition",
-          isFeature
-            ? "bg-cream-soft hover:bg-white text-forest-900"
-            : "bg-forest-800 hover:bg-forest-700 text-cream-soft",
-        ].join(" ")}
-      >
-        Book on WhatsApp
-        <span aria-hidden>→</span>
-      </a>
+        <a
+          href={whatsappLink(buildPkgMessage(p))}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={[
+            "relative mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition",
+            isFeature
+              ? "bg-cream-soft hover:bg-white text-forest-900"
+              : "bg-forest-800 hover:bg-forest-700 text-cream-soft",
+          ].join(" ")}
+        >
+          Book on WhatsApp
+          <span aria-hidden>→</span>
+        </a>
+      </div>
     </article>
   );
 }
