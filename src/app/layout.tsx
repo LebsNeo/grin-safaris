@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       "Silent, emissions-free game viewing in Kruger National Park. Premium guided tours from R2,000 per person.",
     url: "https://grinsafaris.com",
     siteName: "Grin Safaris",
-    images: [{ url: "/images/hero.png", width: 1536, height: 1024 }],
+    images: [{ url: "/images/hero.webp", width: 1536, height: 1024 }],
     locale: "en_ZA",
     type: "website",
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Grin Safaris — Electric Safaris in Kruger",
     description:
       "Silent, emissions-free game viewing in Kruger National Park.",
-    images: ["/images/hero.png"],
+    images: ["/images/hero.webp"],
   },
 };
 

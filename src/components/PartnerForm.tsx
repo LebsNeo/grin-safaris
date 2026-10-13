@@ -32,8 +32,8 @@ export function PartnerForm() {
         aria-hidden="true"
       />
 
-      <Field label="Name" name="name" required />
-      <Field label="Company / lodge" name="company" />
+      <Field label="Company / lodge" name="company" required />
+      <Field label="Your name & role" name="name" required />
       <Field label="Email" name="email" type="email" required />
       <Field label="Message" name="message" textarea required />
 

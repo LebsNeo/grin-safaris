@@ -6,13 +6,14 @@ export const BRAND = {
   phoneRaw: "27624382564",
 } as const;
 
-const waMessage =
-  "Hi Grin Safaris — I'd like to book an electric safari tour. Please share availability and details.";
+export function whatsappLink(message: string) {
+  return `https://wa.me/${BRAND.phoneRaw}?text=${encodeURIComponent(message)}`;
+}
 
-export const whatsappUrl = `https://wa.me/${BRAND.phoneRaw}?text=${encodeURIComponent(
-  waMessage,
-)}`;
+export const whatsappUrl = whatsappLink(
+  "Hi Grin Safaris — I'd like to book a Silent Safari. Please share availability and details.",
+);
 
-export const partnerWhatsappUrl = `https://wa.me/${BRAND.phoneRaw}?text=${encodeURIComponent(
-  "Hi Grin Safaris — I run a tour operator/lodge and would like to discuss a partnership.",
-)}`;
+export const partnerWhatsappUrl = whatsappLink(
+  "Hi Grin Safaris — I run a tour operator / lodge and would like to discuss a partnership.",
+);
