@@ -273,21 +273,49 @@ const PACKAGES: Pkg[] = [
     imageAlt: "Photographer's hands on a DSLR with a long telephoto lens, animal in the distance",
   },
   {
-    id: "lodge",
-    name: "2D / 1N Silent Lodge Escape",
-    blurb: "Two days of silent safari, with a night at a SANParks luxury cottage between them.",
-    duration: "2 days · 1 night",
+    id: "panorama",
+    name: "Panorama Route",
+    blurb:
+      "A full day off the game-drive loops — God's Window, Blyde River Canyon and the Three Rondavels by road.",
+    duration: "8 hours · full day",
     group: "Max 6 guests",
-    price: "R8,500",
-    priceNote: "per person · sharing",
+    price: "R2,900",
     features: [
-      "SANParks luxury cottage stay",
-      "Two full silent game drives",
-      "All meals + park transfers included",
+      "Blyde River Canyon & God's Window",
+      "Bourke's Luck Potholes stop",
+      "Perfect rest day between game drives",
     ],
     image: "/images/package-lodge.webp",
-    imageAlt: "Evening lodge fire pit with stars overhead and a premium cottage in soft focus",
+    imageAlt: "Highveld escarpment viewpoint on the Panorama Route",
   },
+];
+
+/* ---------- multi-day safaris ---------- */
+type Stay = {
+  id: string;
+  name: string;
+  duration: string;
+  from: string;
+};
+
+/**
+ * The overnight ladder. Prices are "from", per person sharing, in the Normal
+ * accommodation tier — the number rises with Classic and Luxury, so the card
+ * copy must keep saying "from" rather than quoting these as fixed rates.
+ */
+const STAYS: Stay[] = [
+  { id: "s2", name: "Quickie Kruger Safari", duration: "2 days · 1 night", from: "R5,900" },
+  { id: "s3", name: "Kruger Silent Safari", duration: "3 days · 2 nights", from: "R9,900" },
+  { id: "s4", name: "Kruger Silent Safari", duration: "4 days · 3 nights", from: "R12,900" },
+  { id: "s5", name: "Kruger Silent Safari", duration: "5 days · 4 nights", from: "R16,900" },
+  { id: "s6", name: "Kruger Silent Safari", duration: "6 days · 5 nights", from: "R20,900" },
+  { id: "s7", name: "Kruger Silent Safari", duration: "7 days · 6 nights", from: "R24,900" },
+];
+
+const STAY_TIERS = [
+  { name: "Normal", detail: "Cottage or bungalow · dinner & breakfast" },
+  { name: "Classic", detail: "Cottages for groups of 4+ · dinner & breakfast" },
+  { name: "Luxury", detail: "Safari lodge · all meals included" },
 ];
 
 function buildPkgMessage(p: Pkg) {
@@ -310,7 +338,7 @@ function Tours() {
           <p className="mt-6 text-stone-text text-lg leading-relaxed">
             Every package includes conservation fees, pickup within Hazyview /
             White River, and the silent electric van. Small groups, expert
-            guiding, no rush.
+            guiding, no rush. Staying longer? The multi-day safaris are below.
           </p>
         </div>
 
@@ -320,9 +348,87 @@ function Tours() {
           ))}
         </div>
 
+        <MultiDaySafaris />
+
         <CarbonReceipt />
       </div>
     </section>
+  );
+}
+
+function buildStayMessage(s: Stay) {
+  return `Hi Grin Safaris — I'd like to book the ${s.name}, ${s.duration} (from ${s.from} pp sharing). Please share availability, accommodation tiers and next steps.`;
+}
+
+/**
+ * The overnight ladder, as a price list rather than image cards: six tiers of
+ * the same trip differ by length, not by scenery, so photo cards would be six
+ * near-identical pictures and would bury the day tours above.
+ */
+function MultiDaySafaris() {
+  return (
+    <div className="mt-20 sm:mt-24">
+      <div className="max-w-3xl">
+        <h3 className="font-display text-3xl sm:text-4xl text-forest-900 leading-[1.1]">
+          Stay longer. Go deeper.
+        </h3>
+        <p className="mt-4 text-stone-text leading-relaxed">
+          Multi-day safaris sleep inside Kruger, so you wake where the animals
+          already are — no gate queues at dawn. Prices are per person sharing
+          and include park fees, accommodation, meals as per your tier, and
+          every game drive in the silent van.
+        </p>
+      </div>
+
+      <ul className="mt-10 divide-y divide-forest-100 overflow-hidden rounded-3xl border border-forest-100 bg-cream-soft">
+        {STAYS.map((s) => (
+          <li
+            key={s.id}
+            className="flex flex-wrap items-center gap-x-6 gap-y-4 px-6 py-5 sm:px-8"
+          >
+            {/* Full width on phones so the name never wraps mid-word; the
+                price and button then share the row below it. */}
+            <div className="w-full min-w-0 sm:w-auto sm:flex-1">
+              <p className="font-medium text-charcoal">{s.name}</p>
+              <p className="mt-0.5 text-sm text-stone-text">{s.duration}</p>
+            </div>
+            <div className="flex-1 text-left sm:flex-none sm:text-right">
+              <p className="text-xs uppercase tracking-[0.2em] text-stone-text">
+                From
+              </p>
+              <p className="font-display text-2xl text-forest-900">{s.from}</p>
+              <p className="text-xs text-stone-text">pp sharing</p>
+            </div>
+            <Link
+              href={whatsappLink(buildStayMessage(s))}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 rounded-full bg-forest-900 px-5 py-2.5 text-sm font-medium text-cream-soft transition-opacity hover:opacity-90"
+            >
+              Enquire
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        {STAY_TIERS.map((t) => (
+          <div
+            key={t.name}
+            className="rounded-2xl border border-forest-100 bg-cream-soft px-5 py-4"
+          >
+            <p className="text-sm font-medium text-forest-900">{t.name}</p>
+            <p className="mt-1 text-sm text-stone-text">{t.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-6 text-sm text-stone-text">
+        Group rates apply from 4 guests. Reduced rate for children under 12
+        sharing with two adults — confirmed on enquiry. Camping and budget
+        tiers are available for groups of 6 or more on request.
+      </p>
+    </div>
   );
 }
 
